@@ -1,0 +1,62 @@
+{
+    "appenders": {
+        "console": {
+            "type": "stdout"
+        },
+        "error": {
+            "type": "stderr"
+        },
+        "file": {
+            "type": "dateFile",
+            "filename": "logs/onela-demo.log",
+            "pattern": ".yyyy-MM-dd.log"
+        },
+        "mail": {
+            "type": "smtp",
+            "transport": "SMTP",
+            "SMTP": {
+                "host": "smtp.onela-demo.cn",
+                "secure": false,
+                "port": 25,
+                "auth": {
+                    "user": "service@onela-demo.cn",
+                    "pass": "anyitech"
+                }
+            },
+            "recipients": "test@onela-demo.cn",
+            "sender": "service@onela-demo.cn",
+            "subject": "onela-demo",
+            "sendInterval": 3600
+        }
+    },
+    "categories": {
+        "debug": {
+            "appenders": [
+                "console"
+            ],
+            "level": "DEBUG"
+        },
+        "default": {
+            "appenders": [
+                "error",
+                "file"
+            ],
+            "level": "INFO"
+        },
+        "apis": {
+            "appenders": [
+                "error",
+                "file"
+            ],
+            "level": "INFO"
+        },
+        "oops": {
+            "appenders": [
+                "error",
+                "file",
+                "mail"
+            ],
+            "level": "ERROR"
+        }
+    }
+}

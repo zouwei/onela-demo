@@ -1,0 +1,26 @@
+{
+    "global": {
+        "space": {
+            "port":9911,
+            "systemName": "SSO系统"
+        },
+        "dbConfig": [
+            {
+                "engine": "default",
+                "type": "mysql",
+                "value": {
+                    "connectionLimit": 5,
+                    "host": "127.0.0.1",
+                    "user": "joke",
+                    "password": "&1qaz@WSX2008",
+                    "database": "sso_db"
+                }
+            }
+        ],
+        "redis": {
+            "host": "116.62.28.180",
+            "port": 6379,
+            "auth_pass": "Zut2nfneMU39PEDE"
+        }
+    }
+}
