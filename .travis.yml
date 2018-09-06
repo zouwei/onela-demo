@@ -1,0 +1,12 @@
+# .travis.yml
+language: node_js   #前端工程所以是JavaScript，编译环境是node_js
+node_js:
+- '8'   #指定node版本
+branchs:
+  only:
+  - master  #指定只有检测到master分支有变动时才执行任务
+
+作者：listener
+链接：https://juejin.im/post/5a9e1a5751882555712bd8e1
+来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
