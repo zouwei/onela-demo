@@ -14,13 +14,13 @@ var app = express();
 // app.use(bodyParser.text());
 // app.use(bodyParser.urlencoded({extended: false}));
 
-// const {testPost, ping, testGetWithqs} = require("../handlers/index");
+const {testPost, ping, testGetWithqs} = require("../handlers/index");
 // app.get("/test", testGetWithqs);
 // app.post("/test", testPost);
-// app.get("/", ping);
+app.get("/ws_sso/", ping);
 
-app.use("/apps/", require("./apps"));
-app.use("/users/", require("./users"));
-app.use("/tokens/", require("./tokens"));
+app.use("/ws_sso/apps/", require("./apps"));
+app.use("/ws_sso/users/", require("./users"));
+app.use("/ws_sso/tokens/", require("./tokens"));
 
 module.exports = exports = app;

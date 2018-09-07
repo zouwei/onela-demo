@@ -5,7 +5,7 @@
 */
 
 module.exports.ping = function (req, res) {
-    res.send("PONG");
+    res.send("PONG,0.0.1");
 };
 
 module.exports.testGetWithqs = function (req, res) {
