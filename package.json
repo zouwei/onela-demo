@@ -4,7 +4,7 @@
   "description": "onela-dome演示项目，SSO单点登录系统",
   "main": "lib/onela.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm -v"
   },
   "repository": {
     "type": "git",
