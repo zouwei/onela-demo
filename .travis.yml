@@ -4,10 +4,6 @@ node_js:
 branchs:
   only:
   - master
-install:
-- cd /var/www/sso.onela.cn/
-after_script:
-- npm -v
 addons:
   ssh_known_hosts:
   - 114.55.249.161
@@ -17,3 +13,4 @@ before_install:
 after_success:
 - chmod 600 ~/.ssh/id_rsa
 - ssh www@114.55.249.161 -o StrictHostKeyChecking=no 'cd /var/www/sso.onela.cn/ && pm2 stop ./bin/onela-demo.js && pm2 stop ./bin/onela-demo.js && git pull && pm2 start ./bin/onela-demo.js'
+- ./update.sh sso
