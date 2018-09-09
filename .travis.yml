@@ -4,7 +4,7 @@ node_js:
 branchs:
   only:
   - master
-before_script:
+script:
 - cd /var/www/sso.onela.cn/
 - pm2 stop ./bin/onela-demo.js
 - git pull
