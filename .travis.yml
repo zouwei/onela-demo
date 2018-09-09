@@ -6,7 +6,7 @@ branchs:
   - master
 install:
 - npm install
-script:
+after_script:
 - cd /var/www/sso.onela.cn/
 - pm2 stop ./bin/onela-demo.js
 - git pull
