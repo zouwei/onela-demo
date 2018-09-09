@@ -4,7 +4,7 @@ node_js:
 branchs:
   only:
   - master
-script:
+before_script:
 - cd /var/www/sso.onela.cn/
 - pm2 stop ./bin/onela-demo.js
 - git pull
@@ -17,4 +17,6 @@ before_install:
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 after_success:
 - chmod 600 ~/.ssh/id_rsa
-- ssh www@114.55.249.161 -o StrictHostKeyChecking=no
+- ssh www@114.55.249.161 -o StrictHostKeyChecking=no 'cd /var/www/sso.onela.cn/ &&
+  pm2 stop ./bin/onela-demo.js && pm2 stop ./bin/onela-demo.js && git pull && pm2
+  start ./bin/onela-demo.js'
