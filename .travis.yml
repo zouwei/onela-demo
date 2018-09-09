@@ -4,8 +4,6 @@ node_js:
 branchs:
   only:
   - master
-services:
-  mysql
 script:
   - npm test
 addons:
@@ -16,4 +14,4 @@ before_install:
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 after_success:
 - chmod 600 ~/.ssh/id_rsa
-- ssh www@114.55.249.161 -o StrictHostKeyChecking=no '~/update.sh sso'
+- ssh www@114.55.249.161 -o StrictHostKeyChecking=yes '~/update.sh sso'
