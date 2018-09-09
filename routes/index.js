@@ -22,5 +22,6 @@ app.get("/ws_sso/", ping);
 app.use("/ws_sso/apps/", require("./apps"));
 app.use("/ws_sso/users/", require("./users"));
 app.use("/ws_sso/tokens/", require("./tokens"));
+// 添加测试，测试travis
 
 module.exports = exports = app;
