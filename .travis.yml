@@ -5,7 +5,7 @@ branchs:
   only:
   - master
 install:
-- npm install
+- cd /var/www/sso.onela.cn/
 after_script:
 - npm -v
 addons:
