@@ -19,3 +19,27 @@ before_install:   # 添加解密命令
 after_success:
   - chmod 600 ~/.ssh/id_rsa   #还是Linux文件权限问题
   - ssh www@114.55.249.161 -o StrictHostKeyChecking=no 'cd /var/www/sso.onela.cn/ && pm2 stop ./bin/onela-demo.js && pm2 stop ./bin/onela-demo.js && git pull && pm2 start ./bin/onela-demo.js'  #使用ssh连接服务器，ssh 用户名@IP地址 -p 端口号
+
+
+language: node_js
+node_js:
+- 8.11.3
+branchs:
+  only:
+  - master
+before_script:
+- cd /var/www/sso.onela.cn/
+- pm2 stop ./bin/onela-demo.js
+- git pull
+- pm2 start ./bin/onela-demo.js
+addons:
+  ssh_known_hosts:
+  - 114.55.249.161
+before_install:
+- openssl aes-256-cbc -K $encrypted_0690d495720c_key -iv $encrypted_0690d495720c_iv
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+after_success:
+- chmod 600 ~/.ssh/id_rsa
+- ssh www@114.55.249.161 -o StrictHostKeyChecking=no 'cd /var/www/sso.onela.cn/ &&
+  pm2 stop ./bin/onela-demo.js && pm2 stop ./bin/onela-demo.js && git pull && pm2
+  start ./bin/onela-demo.js'
