@@ -1,7 +1,7 @@
 # .travis.yml
 language: node_js   #本项目基于node_js实现工程
 node_js:
-  - '8'   #指定node版本
+  - '8.11.3'   #指定node版本
 branchs:
   only:
   - master  #指定只有检测到master分支有变动时才执行任务
@@ -9,10 +9,8 @@ install:
   - npm install
 script:
   - pm2 stop ./bin/onela-demo.js
-  - npm run build
   - git pull
-  - npm install
-  -  pm2 start ./bin/onela-demo.js
+  - pm2 start ./bin/onela-demo.js
 addons:
   ssh_known_hosts:
   - 114.55.249.161 # 受信主机，你的Linux服务器ip
