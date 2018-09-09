@@ -1,10 +1,24 @@
 # .travis.yml
 language: node_js   #本项目基于node_js实现工程
 node_js:
-- '8'   #指定node版本
+  - '8'   #指定node版本
 branchs:
   only:
   - master  #指定只有检测到master分支有变动时才执行任务
+install:
+  - npm install
+script:
+  - pm2 stop ./bin/onela-demo.js
+  - npm run build
+  - git pull
+  - npm install
+  -  pm2 start ./bin/onela-demo.js
+addons:
+  ssh_known_hosts:
+  - 114.55.249.161 # 受信主机，你的Linux服务器ip
   before_install:   # 添加解密命令
-- openssl aes-256-cbc -K $encrypted_****_key -iv $encrypted_****_iv
+  - openssl aes-256-cbc -K $encrypted_****_key -iv $encrypted_****_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
+after_success:
+  - chmod 600 ~/.ssh/id_rsa   #还是Linux文件权限问题
+  - ssh www@114.55.249.161 -o StrictHostKeyChecking=no 'cd /var/www/sso.onela.cn/'   #使用ssh连接服务器，ssh 用户名@IP地址 -p 端口号
